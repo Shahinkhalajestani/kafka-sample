@@ -32,8 +32,8 @@ public class KafkaProducerConfig {
     }
 
     @Bean
-    public ProducerFactory<String, Customer> customerKafkaProducer(){
-        return new DefaultKafkaProducerFactory<>(producerProperties());
+    public ProducerFactory<String, Customer> customerKafkaProducer(CustomerSerializer customerSerializer){
+        return new DefaultKafkaProducerFactory<>(producerProperties(),new StringSerializer(),customerSerializer);
     }
 
 }
